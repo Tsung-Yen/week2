@@ -37,22 +37,27 @@ avg({
         ]
     })
 
-    #Part3
-import sys
+#Part3
 def maxProduct(nums):
-    count=len(nums)   
-    maxNum = nums[0]
-    secLarNum = -sys.maxsize-1
-    for i in range(count):
-        if nums[i] > maxNum:
-            maxNum = nums[i]
-            secLarNum = maxNum
-        elif nums[i] < maxNum:
-            secLarNum = nums[i]
-        ans = maxNum * secLarNum
-    print(ans) 
+    list = []
+    count = len(nums)
+    max = nums[0]
+    min = nums[0]
+    for i in range(0,count):
+        for j in range(i+1,count):
+            ans = nums[i]*nums[j]
+            list.append(ans)
+    listCount = len(list)
+    for x in range(0,listCount):
+        if list[x] > max:
+            max = list[x]
+        elif list[x]<max:
+            min = list[x]
+    print(max)
+                
 maxProduct([5,20,2,6])
 maxProduct([10,-20,0,3])
+
 
 #Part4
 def twoSums(nums,target):
