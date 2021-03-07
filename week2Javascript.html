@@ -51,20 +51,25 @@
 
             // Part3
             function maxProduct(nums){
-                var count = nums.length;
-                var maxNum = nums[0];
-                var secLarNum = Number.MIN_VALUE;
-                for(var i = 1;i<count;i++){
-                    if(nums[i]>maxNum){
-                        secLarNum = maxNum;
-                        maxNum = nums[i];
-                    }else{
-                        if(nums[i]>secLarNum){
-                            secLarNum = nums[i];
-                        }
+                var list = []; 
+                var max = nums[0];
+                var secLar = 0;  
+                for(let i = nums.length-1 ; i>0 ; i--){
+                    for(let j = i-1 ;j>=0;j--){
+                        var ans = nums[i] * nums[j];
+                        list.push(ans);
                     }
                 }
-               console.log(maxNum*secLarNum);
+                // console.log(list);
+                for(var x = 0; x<list.length ; x++){
+                    if(list[x]>max){
+                        max = list[x];
+                        seclar = max;
+                    }else if(list[x]<max){
+                        seclar = list[x];
+                    }
+                }
+                console.log(max);
             }
             maxProduct([5,20,2,6]);
             maxProduct([10,-20,0,3]);
